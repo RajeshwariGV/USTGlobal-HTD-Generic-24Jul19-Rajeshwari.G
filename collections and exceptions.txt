@@ -1,0 +1,427 @@
+STRINGS:
+	a) Strings are reference types,not value types,such as int or boolean.As a result, a string variable holds a reference to an object created
+	   from the string class, not the value of the string itself.
+	b) Even though the strings are primitive types,the java compiler has some features designed to let you work with strings almost as though
+	   they were primitve types.
+	c) You can combine,or concatenate,strings by using '+' operator.String is the only class where operator overloading is supported in java.
+	d) String is immutable.An immutable object is an object that,once created,can never be changed.The string class is the most common example 
+	   of an object.
+	e) The string pool contains two parts:(i) Constant pool (ii) Non-Constant pool.within the constant pool duplicates are not allowed.
+	   whereas within non-constant pool duplicates are allowed.
+
+STRING BUILDER AND STRING BUFFER CLASSES:
+	
+	a) The string is a powerful class,but it is not efficient.Because string objects are immutable,any method of the string class that modifies
+	   the string in any way must create anew string object.
+	b) To overcome this problem,java offers two alternatives to the string class:String Buffer and String Builder classes.
+	c) The String buffer and string builder classes are mirror images.Both have the same methods and perform the same string manipulations.
+	d) The only difference in string buffer and string builder is that string buffer is safe whereas string builder is not safe.
+	e) String builder sb1 =new String builder("hii");
+	   String buffer sb2 = new String buffer("hlo");
+
+CONSTRUCTOR:
+		1) ex:public StringBuffer(){
+				super(16);
+		}
+			a) Constructs a string buffer with no character init.and an initialize capacity of 16 characters.
+
+		2) ex:public StringBuffer(int capacity){
+				super(capacity);
+		}
+			b) Constructs astring buffer with no characters in it and the specified intial capacity.
+
+		3) ex:String buffer sb = new String Buffer(-1);
+			c) @param capacity the initial capacity.
+			   @Ecxeption Negative Array size exception.
+		4) ex: public StringBuffer(String str){
+				super(str.length() +16);
+				append(str);
+			d) Constructs a string buffer initialized to the contents of the specified string.the initial capacity of the string  buffer
+			   is {@code 26} plus the length of the string argument.
+				@para, is the initial contents of the buffer.
+		5) ex: public stringBuffer (charSequence seq){
+				this(seq.length()+16);
+				append(seq);
+			}
+			e) Constructs a string buffer that contains the same characters asthe specified{@code charSequence}.the initial
+			   capacity of the string buffer as{@code 16} plus the length of the{@code charSequence}argument.
+
+DIIFERENCES BETWEEN STRING,STRING BUFFER,STRING BUILDER:
+	
+		STRING 					STRING BUFFER 				STRING BUILDER
+	1.Immutable.				     1.Mutable.				      1.Mutable.
+	2.Not thread safe.			    	    2.Thread safe.			     	     2.Not thread safe.
+	3.Not synchronized.			    	   3.synchronized.			     	     3.Not synchronized.
+	4.Fast.					  4.Slow.				     	     4.Fast(Efficient)
+
+************************************************************************************************************************************************
+EXCEPTION HANDLING:
+
+Exception:Execption is an error event that can happen during the execution of program and disrupts its normal flow of execution.
+
+Execption Handling: 
+		1) Exceptions in java can arise from different kinds of situations such as wrong data entered by user,hardware failure,network
+		   connection failure,database server down etc..,
+		2) Whenever an error occurs while executing a statement,creates an exception object and then the normal flow of program halts.
+		3) The exception object contains a lot of debugging information such as method hierarchy,line number where exception is occured,
+		   type of exception etc..,
+		4) When the exception occurs in a method,the process of creating the exception object and handling it over to runtime environment
+		   is called "throwing the exception".
+		5) If appropriate exception handler is found ,exception object is passed to the handler to process it.the handler is known as 
+		   "Catching the exception".
+NOTE:Java Exception handling is aframework that is used to handle runtime errors only.compile time error are not handled by exception handling 
+     in java.
+
+Q)What is the difference between exception and errors?
+		
+		ERRORS						      			EXCEPTION
+	1.Recovering from error is not possible.					1.We can recover from exceptions by using exception handler.
+	2.All errors in java are unchecked type.					2.Exceptions include both checked and unchecked type.
+	3.Errors occur at runtime and not know to compiler.			3.All exceptions occur at runtime but checked exception are
+								                  known to compiler while unchecked are not.
+	4.Errors are mostly occured by the environment in which			4.program itself is responsible for causing exceptions.
+	  program is running.
+  	5.Defined in java.lang.package.					5.Defined in java.lang.exceptionpackage.
+	6.ex:java.lang.stackoverflow error					6.ex: ArrayindexoutofBoundException
+	     java.lang.outofmemory error					      NullpointerException e.t.c..,
+
+*************************************************************************************************************************************************
+JAVA EXCEPTION HANDLING KEYWORDS:
+
+	1) THROW :User defined Exception
+	2) THROWS :
+	3) TRY-CATCH:
+	4) FINALLY:
+*************************************************************************************************************************************************
+JAVA EXCEPTION HIRERACHY:
+
+	1) Java exceptions are hirerachical and inheritance is used to categorize different types of exceptions.
+	2)Throwable is the parent class of java exceptions hirerachy and it has two child objects-Error and Exception.
+	3) Exceptions are further divided in to two types they are checked exception and unchecked exception//runtime exception.
+
+ERRORS:
+
+	1)Errors are exceptional scenarios that are of out of scope  of application and its not possible to anticipate and remove.
+		ex: java.lang.stackoverflow error					
+	    	     java.lang.outofmemory error
+NOTE:
+	a) Whenever we have checked exceptions ----->try and catch block(throws warning at compile)
+	b) Whenever we have unchecked exceptions-----> try and finally block(dont have any warnings by the compiler)
+
+***********************************************************************************************************************************************************************
+Q. Note :
+
+	a) whenever we have checked exceptions(throws warning at compile)-----> try and catch block
+	b) whenever we have unchecked exceptions(don,t have any warnings by compiler,it will throws after compilation)-----> try and finally block
+	c) unchecked Exception occure at run time.
+
+	d) 	/**
+     		* Returns the detail message string of this throwable.
+    		*
+     		* @return  the detail message string of this {@code Throwable} instance
+     		*          (which may be {@code null}).
+     		*/
+
+   			 public String getMessage() {
+
+
+        			return detailMessage;
+    			}
+
+	e)	 /**
+     		 * Creates a localized description of this throwable.
+     		 * Subclasses may override this method in order to produce a
+     		 * locale-specific message.  For subclasses that do not override this
+     		 * method, the default implementation returns the same result as
+     		 * {@code getMessage()}.
+     		 *
+     		 * @return  The localized description of this throwable.
+     		 * @since   1.1
+     		 */
+
+    			public String getLocalizedMessage() {
+        		return getMessage();
+   				 }
+
+	f)	/*
+		 * 1. If we have multiple catch block we can't write
+		 * 	  Exception class as 1st parameter
+		 * 2. We can have that Exception class in last catch block.
+		 */
+		
+
+***********************************************************************************************************************************************************************
+Q. Note:
+
+	1) Normal
+
+	try{}
+	catch(){}
+
+	2) triable resources(advance java-JDBC(connection b/w java pgm and database)in order to close we use close() otherthan close() we go for triable resources).
+
+	try(){}
+	catch(){}
+
+***********************************************************************************************************************************************************************
+Q. COLLECTIONS :
+
+	a) Collections are like containers that group multiple items in a single unit.
+	b) Collection are used in every programming language and when java arrived, it also came with few collection classes; Vector,Stack,Hashtable,Array.
+	c) Java 1.2 provide Collection FrameWork ----> Manipulate collections in java in a standard way.
+	d) Java collection Frameworks consist of following parts :
+		i)Interface
+			a) Java collection franme work interfaces provides the abstract data tyoe to represent collection.
+			java.util.Collections
+			
+		b) Methods are :
+			1) size()
+			2) iterator()
+			3) add()
+			4) remove()
+			5) clear()
+
+			c) Other interface are :
+			java.util.List/Set/Queue?Map
+
+		ii) Implementation Classes.
+	
+			a) ArrayList, LinkedList,HashMap,TreeMap,HashSet,TreeSet
+
+Note: We can also create the custom collection class.
+
+***********************************************************************************************************************************************************************
+Q. Benifits of java Collextion FrameWork
+
+	a) Reduced Development effort.
+	b) Increased Quality
+	c) Re-usabilty and interoperability
+
+**********************************************************************************************************************************************************************
+Q. Java Collections Interfaces
+
+	a) All the core collection interfaces are generic.(syntax : <E> )
+	b) Whenever we use collection we come across "class class Exception " (So we use generic to overcome that Exception).
+	c) Generic helps in reducing run-time errors by type-checking the object at compile time.
+	d) If an unsupported operation is invoked, a collection implementation throws an UnsupportedOperationException.
+
+**********************************************************************************************************************************************************************
+Q. Collection interface :
+
+	a) Root of the collection herirarchy.
+	b) A collection represents  group of objects known as Elements.
+	c) Methods : size(),isEmpty(),contains(),add(),remove(),iterator().
+	d) For bulk operation : containsAll(),addAll(),removeAll(),retainAll(),clear().
+	e) toArray() are provided
+
+***********************************************************************************************************************************************************************
+Q. Set interface :
+
+	a) A collection that contains no duplicate elements.
+	b) sets contain no pair of elements {@code e1} and {@code e2} such that {@code e1.equals(e2)}, and at most one null element.
+	c) As implied by its name, this interface models the mathematical <i>set</i> abstraction.
+	d) Implementation Classes : HashSet,TreeSet,LinkedHashSet.
+
+***********************************************************************************************************************************************************************
+Q. List Interface :
+
+	a)  An ordered collection (also known as a <i>sequence</i>).
+	b) The user of this interface has precise control over where in the list each element is inserted.  
+	   The user can access elements by their integer inde(position in the list), and search for elements in the list.<p>	
+	c) Unlike sets, lists typically allow duplicate elements.  More formally, lists typically allow pairs of elements {@code e1} and {@code e2}
+           such that {@code e1.equals(e2)}, and they typically allow multiple null elements if they allow null elements at all.
+	d) Implementation Classes : ArrayList and LinkedList
+	e) methods---> add an element at specific index, remove/replace elements based on the index and to get a sub-list using interface.
+			
+
+05-09-2019 {afternoon session}
+==============================================================================================================================================================
+
+JAVA COLLECTION CLASSES
+*****************************************************************************************************************
+Java collections framework comes with many implementation classes for the interfaces.
+
+
+HashMap > thisclass implements the <tt>set</tt> interface ,supported by a hash table .
+In the sence of no gaurentee as to the iteration order of the set.This class permits the <tt>null</tt>element
+
+CONSTRUCTOR a new ,emptyset;
+public HashSet(){
+map = new HashMap<>();
+
+}
+===============
+
+public HashSet(int initialCapacity, float loadfactor){
+map = new HashMap<>(initialCapacity);
+}
+============
+=>@param initial capacity    the initial capacity of the hash map 
+  @param loadfactor             the load factor of the hash map
+
+================
+HashSet(int initialCapacity, float loadfactor,boolean dummy){
+map = new LinkedHashMap<>(initialCapacity,loadfactor);
+}
+
+costructs a new , empty linked hash set.
+
+
+HashSets are 5.
+
+
+
+
+
+
+
+jnotes 05-09-19
+======================
+
+
+
+Q. Queue Interface :
+
+    1)	A collection designed for holding elements prior to processing. Besides basic {@link Collection} operations, queues provideadditional insertion, extraction, 		and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either
+ 	{@code null} or {@code false}, depending on the operation)(FIFO).
+ 
+    2)	The latter form of the insert operation is designed specifically for use with capacity-restricted {@code Queue} implementations; in most implementations, 		insert operations cannot fail.
+
+    3)	Methods : 
+
+	a) boolean offer(E e);--> Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions.
+			     -->throws ClassCastException,NullPointerException,IllegalArgumentException.
+			     -->return {@code true} if the element was added to this queue, else false.
+
+	b)  E element();----> Retrieves, but does not remove, the head of this queue.  This method differs from {@link #peek peek} only in that it throws an exception
+     			      if this queue is empty.
+     			----> return the head of this queue
+     			----> throws NoSuchElementException if this queue is empty.
+
+	c)  E poll(); -----> Retrieves and removes the head of this queue, or returns {@code null} if this queue is empty.
+     		      -----> return the head of this queue, or {@code null} if this queue is empty.
+
+    4) Implementation : Priority queue.
+
+***********************************************************************************************************************************************************************
+Q. Map Interface :
+
+	a) An object that maps keys to values. A map cannot contain duplicate keys;each key can map to at most one value. 
+	b) This interface takes the place of the Dictionary class, which was a totally abstract class rather than an interface.
+	c) Implementation : HashMap,TreeMap,LinkedHashMap 
+	d) Methods : put(),get(),containsKey(),containsValue(),size(),isEmpty().
+
+***********************************************************************************************************************************************************************
+Q. Java Collection Classes
+
+	a) HashMap
+		--->This class implements the {@code Set} interface, backed by a hash table (actually a {@code HashMap} instance).
+		---> It makes no guarantees as to the iteration order of the set; in particular, it does not guarantee that the order will remain constant over time.  		     	     This class permits the {@code null} element.
+		---> Constructs a new, empty set; the backing {@code HashMap} instance has default initial capacity (16) and load factor (0.75).
+
+    			public HashSet() {
+        		map = new HashMap<>(); }
+
+		--->   Constructs a new set containing the elements in the specifiedcollection.  The {@code HashMap} is created with default load factor
+     			(0.75) and an initial capacity sufficient to contain the elements in the specified collection. @param c the collection
+			 whose elements are to be placed into this set @throws NullPointerException if the specified collection is null
+
+   				 public HashSet(Collection<? extends E> c) {
+       				 map = new HashMap<>(Math.max((int) (c.size()/.75f) + 1, 16));
+       				 addAll(c); }
+		----> Constructs a new, empty set; the backing {@code HashMap} instance has the specified initial capacity and the specified load factor.
+    		 @param initialCapacity   the initial capacity of the hash map
+		 @param      loadFactor        the load factor of the hash map
+		 @throws     IllegalArgumentException if the initial capacity is less than zero, or if the load factor is nonpositive
+    
+  			  public HashSet(int initialCapacity, float loadFactor) {
+        			map = new HashMap<>(initialCapacity, loadFactor); }
+
+		----->  Constructs a new, empty linked hash set.  (This package private constructor is only used by LinkedHashSet.) The backing HashMap instance is a 			LinkedHashMap with the specified initial capacity and the specified load factor. 
+		 @param      initialCapacity   the initial capacity of the hash map
+     		 @param      loadFactor  the load factor of the hash map
+     		 @param      dummy    ignored (distinguishes this constructor from other int, float constructor.)
+		@throws     IllegalArgumentException if the initial capacity is less
+                than zero, or if the load factor is nonpositive
+    
+    				HashSet(int initialCapacity, float loadFactor, boolean dummy) {
+       				 map = new LinkedHashMap<>(initialCapacity, loadFactor); }
+
+*********************************************************************************************************************************************************************
+Q. HashMap Class :
+
+
+
+
+TreeSet(NavigableMap<E,Object> m) {
+        this.m = m;
+    }
+
+    /**
+     * Constructs a new, empty tree set, sorted according to the
+     * natural ordering of its elements.  All elements inserted into
+     * the set must implement the {@link Comparable} interface.
+     * Furthermore, all such elements must be <i>mutually
+     * comparable</i>: {@code e1.compareTo(e2)} must not throw a
+     * {@code ClassCastException} for any elements {@code e1} and
+     * {@code e2} in the set.  If the user attempts to add an element
+     * to the set that violates this constraint (for example, the user
+     * attempts to add a string element to a set whose elements are
+     * integers), the {@code add} call will throw a
+     * {@code ClassCastException}.
+     */
+    public TreeSet() {
+        this(new TreeMap<E,Object>());
+    }
+
+
+
+=====================================================================================================
+public TreeSet(Comparator<? super E> comparator) {
+        this(new TreeMap<>(comparator));
+    }
+
+@param comparator the comparator that will be used to order this set.
+     *        If {@code null}, the {@linkplain Comparable natural
+     *        ordering} of the elements will be used.
+		
+
+
+
+
+ArrayList:
+
+=>>it will craete a new object with a specified integer capacity.
+=>> default size of array list is 10.
+
+=>> Helps us to manipulate the size of underlined word
+
+
+Array has been resize on its own
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
