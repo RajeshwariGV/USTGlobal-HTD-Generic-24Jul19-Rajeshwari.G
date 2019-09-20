@@ -1,0 +1,232 @@
+                                 ASSIGNMENT_1
+=======================================================================================================
+[1]. Write a Query to display the employees working in dept 20?
+
+mysql> select * from employee_table where deptId=20;
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name        | emailId         | designation                         | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| 402 | Raja        | raja@gmail.com  | Research and Development department |    70914 |   20 | 1997-03-03  | 2011-06-04 |  13000 |     20 | b+         |
+| 403 | Rajalakshmi | raju3@gmail.com | Purchasing department               |    70919 |   23 | 1998-03-03  | 2001-09-04 |  20000 |     20 | A+         |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+2 rows in set (0.09 sec)
+
+[2].Write a Query to display the employees earning more than Rs 25000?
+select * from employee_table where salary>25000;
++-----+-------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name  | emailId         | designation           | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| 407 | James | james@gmail.com | Testing department    |    69413 |   28 | 1990-02-27  | 2000-03-05 |  33000 |     50 | B+         |
+| 408 | Rose  | rose@gmail.com  | Marketing department  |    73413 |   29 | 1989-07-02  | 2010-12-28 |  45000 |     60 | AB+        |
+| 409 | sidhu | sidhu@gmail.com | Manager               |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 410 | sravs | sravs@gmail.com | Manager               |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
+| 411 | smith | smith@gmail.com | production Department |    73082 |   30 | 1980-04-11  | 2000-03-27 |  45000 |     90 | AB-        |
+| 412 | lilly | lilly@gmail.com | HR Department         |    89082 |   32 | 1977-01-21  | 2002-05-15 |  45000 |    100 | AB+        |
+| 413 | Raji  | raji@gmail.com  | Vice President        |   800810 |   25 | 1998-07-10  | 2013-07-05 |  35000 |    110 | AB-        |
+| 414 | Vinni | vinni@gmail.com | Purchasing Department |    77368 |   36 | 1999-01-06  | 2015-09-07 |  55000 |    111 | o+         |
+| 415 | sanju | sanju@gmail.com | clerk Department      |    80290 |   31 | 1967-12-09  | 2000-03-28 | 100000 |    112 | B+         |
+| 416 | Rishi | rishi@gmail.com | production Department |    80296 |   42 | 1950-05-25  | 2007-03-30 | 700000 |    113 | AB+        |
++-----+-------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+10 rows in set (0.00 sec)
+[3].Write a Query to display the employees Whose job type is software developer?
+mysql> select * from employee_table where designation='Developer';
+Empty set (0.03 sec)
+
+mysql> select * from employee_table where designation='Manager';
++-----+-------+-----------------+-------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name  | emailId         | designation | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------+-----------------+-------------+----------+------+-------------+------------+--------+--------+------------+
+| 409 | sidhu | sidhu@gmail.com | Manager     |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 410 | sravs | sravs@gmail.com | Manager     |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
++-----+-------+-----------------+-------------+----------+------+-------------+------------+--------+--------+------------+
+2 rows in set (0.02 sec)
+[4].Write a Query to display the employees working in dept 10,20 &40?
+mysql> select * from employee_table where deptId in(10,20,40);
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name        | emailId         | designation                         | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| 401 | Rani        | rani@gmail.com  | sales department                    |    70948 |   21 | 1997-07-16  | 2015-06-04 |  15000 |     10 | A-         |
+| 402 | Raja        | raja@gmail.com  | Research and Development department |    70914 |   20 | 1997-03-03  | 2011-06-04 |  13000 |     20 | b+         |
+| 403 | Rajalakshmi | raju3@gmail.com | Purchasing department               |    70919 |   23 | 1998-03-03  | 2001-09-04 |  20000 |     20 | A+         |
+| 405 | Eswar       | eswar@gmail.com | Production department               |    70956 |   24 | 1998-04-10  | 2018-09-04 |  20000 |     40 | o+         |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+4 rows in set (0.00 sec)
+[5].Write a Query to display the employees whose name starts with 's'?
+mysql> select * from employee_table where name like 's%';
++-----+-------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name  | emailId         | designation           | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| 409 | sidhu | sidhu@gmail.com | Manager               |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 410 | sravs | sravs@gmail.com | Manager               |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
+| 411 | smith | smith@gmail.com | production Department |    73082 |   30 | 1980-04-11  | 2000-03-27 |  45000 |     90 | AB-        |
+| 415 | sanju | sanju@gmail.com | clerk Department      |    80290 |   31 | 1967-12-09  | 2000-03-28 | 100000 |    112 | B+         |
+| 417 | sam   | NULL            | NULL                  |    85799 |   23 | 1998-07-10  | NULL       |   7756 |     99 | NULL       |
++-----+-------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+5 rows in set (0.00 sec)
+[6].Write a Query to display the employees whose firstname is having letter 'L' as second character?
+mysql> select * from employee_table where name like '_l%';
+Empty set (0.00 sec)
+[7].Write a Query to display the employees whose firstname is having atleast 2'A' character?
+mysql> select * from employee_table where name like '%a%a';
++-----+----------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name     | emailId         | designation                         | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+----------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| 402 | Raja     | raja@gmail.com  | Research and Development department |    70914 |   20 | 1997-03-03  | 2011-06-04 |  13000 |     20 | b+         |
+| 406 | Akshitha | akshi@gmail.com | clerk department                    |    70988 |   20 | 1997-09-01  | 2017-09-04 |  24000 |     50 | A-         |
++-----+----------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+2 rows in set (0.00 sec)
+[8].Write a Query to display the employees whose firstname is having letter 'E' as the second last character?
+mysql> select * from employee_table where designation like '%e%e%e';
+Empty set (0.00 sec)
+[9].Write a Query to display the employees who are having exactly 5 characters in their name?
+mysql> select * from employee_table where name like '_____';
++-----+-------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name  | emailId         | designation           | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| 404 | pooja | pooja@gmail.com | HR department         |    70989 |   25 | 1993-02-03  | 2003-09-04 |  17000 |     30 | o+         |
+| 405 | Eswar | eswar@gmail.com | Production department |    70956 |   24 | 1998-04-10  | 2018-09-04 |  20000 |     40 | o+         |
+| 407 | James | james@gmail.com | Testing department    |    69413 |   28 | 1990-02-27  | 2000-03-05 |  33000 |     50 | B+         |
+| 409 | sidhu | sidhu@gmail.com | Manager               |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 410 | sravs | sravs@gmail.com | Manager               |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
+| 411 | smith | smith@gmail.com | production Department |    73082 |   30 | 1980-04-11  | 2000-03-27 |  45000 |     90 | AB-        |
+| 412 | lilly | lilly@gmail.com | HR Department         |    89082 |   32 | 1977-01-21  | 2002-05-15 |  45000 |    100 | AB+        |
+| 414 | Vinni | vinni@gmail.com | Purchasing Department |    77368 |   36 | 1999-01-06  | 2015-09-07 |  55000 |    111 | o+         |
+| 415 | sanju | sanju@gmail.com | clerk Department      |    80290 |   31 | 1967-12-09  | 2000-03-28 | 100000 |    112 | B+         |
+| 416 | Rishi | rishi@gmail.com | production Department |    80296 |   42 | 1950-05-25  | 2007-03-30 | 700000 |    113 | AB+        |
++-----+-------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+10 rows in set (0.00 sec)
+[10].Write a Query to display the employees whose salary between 200000 and 300000?
+mysql> select * from employee_table where salary between 20000 and 30000;
++-----+-------------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name        | emailId         | designation           | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| 403 | Rajalakshmi | raju3@gmail.com | Purchasing department |    70919 |   23 | 1998-03-03  | 2001-09-04 |  20000 |     20 | A+         |
+| 405 | Eswar       | eswar@gmail.com | Production department |    70956 |   24 | 1998-04-10  | 2018-09-04 |  20000 |     40 | o+         |
+| 406 | Akshitha    | akshi@gmail.com | clerk department      |    70988 |   20 | 1997-09-01  | 2017-09-04 |  24000 |     50 | A-         |
++-----+-------------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+3 rows in set (0.00 sec)
+                                                  ASSIGNMENT[2]
+
+===================================================================================================================================================
+[1].Write a Query to dispaly the details of the software developer in dept 30?
+mysql> select * from employee_table where designation='Developer' and deptId=30;
+Empty set (0.00 sec)
+
+mysql> select * from employee_table where designation='Manager' and deptId=70;
++-----+-------+-----------------+-------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name  | emailId         | designation | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------+-----------------+-------------+----------+------+-------------+------------+--------+--------+------------+
+| 409 | sidhu | sidhu@gmail.com | Manager     |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 410 | sravs | sravs@gmail.com | Manager     |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
++-----+-------+-----------------+-------------+----------+------+-------------+------------+--------+--------+------------+
+2 rows in set (0.00 sec)
+
+
+[2].Write a Query to display the employees of all the softer developer in dept number 40 and having salary greater than 50000?
+mysql> select * from employee_table where designation ='Developer' and deptId=30  and salary > 5000;
+Empty set (0.00 sec)
+
+[3].Write a Query to display the employees expect those who are working in dept 10& 20?
+mysql> select * from employee_table where deptId not in(10,20);
++-----+----------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name     | emailId         | designation           | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+----------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+| 404 | pooja    | pooja@gmail.com | HR department         |    70989 |   25 | 1993-02-03  | 2003-09-04 |  17000 |     30 | o+         |
+| 405 | Eswar    | eswar@gmail.com | Production department |    70956 |   24 | 1998-04-10  | 2018-09-04 |  20000 |     40 | o+         |
+| 406 | Akshitha | akshi@gmail.com | clerk department      |    70988 |   20 | 1997-09-01  | 2017-09-04 |  24000 |     50 | A-         |
+| 407 | James    | james@gmail.com | Testing department    |    69413 |   28 | 1990-02-27  | 2000-03-05 |  33000 |     50 | B+         |
+| 408 | Rose     | rose@gmail.com  | Marketing department  |    73413 |   29 | 1989-07-02  | 2010-12-28 |  45000 |     60 | AB+        |
+| 409 | sidhu    | sidhu@gmail.com | Manager               |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 410 | sravs    | sravs@gmail.com | Manager               |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
+| 411 | smith    | smith@gmail.com | production Department |    73082 |   30 | 1980-04-11  | 2000-03-27 |  45000 |     90 | AB-        |
+| 412 | lilly    | lilly@gmail.com | HR Department         |    89082 |   32 | 1977-01-21  | 2002-05-15 |  45000 |    100 | AB+        |
+| 413 | Raji     | raji@gmail.com  | Vice President        |   800810 |   25 | 1998-07-10  | 2013-07-05 |  35000 |    110 | AB-        |
+| 414 | Vinni    | vinni@gmail.com | Purchasing Department |    77368 |   36 | 1999-01-06  | 2015-09-07 |  55000 |    111 | o+         |
+| 415 | sanju    | sanju@gmail.com | clerk Department      |    80290 |   31 | 1967-12-09  | 2000-03-28 | 100000 |    112 | B+         |
+| 416 | Rishi    | rishi@gmail.com | production Department |    80296 |   42 | 1950-05-25  | 2007-03-30 | 700000 |    113 | AB+        |
+| 417 | sam      | NULL            | NULL                  |    85799 |   23 | 1998-07-10  | NULL       |   7756 |     99 | NULL       |
++-----+----------+-----------------+-----------------------+----------+------+-------------+------------+--------+--------+------------+
+14 rows in set (0.00 sec)
+
+
+[4].Write a Query to display the employees who are not working as software developer and clerks in dept 10 and 20 with a salary in the range of 1000 and 3000?
+mysql> select * from employee_table where designation not in('Manager','HR') and deptId in(10,20) and salary between 10000 and 30000;
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name        | emailId         | designation                         | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| 401 | Rani        | rani@gmail.com  | sales department                    |    70948 |   21 | 1997-07-16  | 2015-06-04 |  15000 |     10 | A-         |
+| 402 | Raja        | raja@gmail.com  | Research and Development department |    70914 |   20 | 1997-03-03  | 2011-06-04 |  13000 |     20 | b+         |
+| 403 | Rajalakshmi | raju3@gmail.com | Purchasing department               |    70919 |   23 | 1998-03-03  | 2001-09-04 |  20000 |     20 | A+         |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+[5].Write a Query to display the employees whose salary is not in the range of 10000 to 20000 in dept 10,20,30 except all salesmen?
+
+mysql> select * from employee_table where designation !=('Developer' and 'clerk') and deptId in(10,20) and salary between 1000 and 3000;
+Empty set, 17 warnings (0.01 sec)
+
+
+[6]..Write a Query to display the employees by their salary in descending order?
+mysql> select * from employee_table order by salary desc;
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name        | emailId         | designation                         | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| 416 | Rishi       | rishi@gmail.com | production Department               |    80296 |   42 | 1950-05-25  | 2007-03-30 | 700000 |    113 | AB+        |
+| 415 | sanju       | sanju@gmail.com | clerk Department                    |    80290 |   31 | 1967-12-09  | 2000-03-28 | 100000 |    112 | B+         |
+| 409 | sidhu       | sidhu@gmail.com | Manager                             |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 414 | Vinni       | vinni@gmail.com | Purchasing Department               |    77368 |   36 | 1999-01-06  | 2015-09-07 |  55000 |    111 | o+         |
+| 408 | Rose        | rose@gmail.com  | Marketing department                |    73413 |   29 | 1989-07-02  | 2010-12-28 |  45000 |     60 | AB+        |
+| 411 | smith       | smith@gmail.com | production Department               |    73082 |   30 | 1980-04-11  | 2000-03-27 |  45000 |     90 | AB-        |
+| 412 | lilly       | lilly@gmail.com | HR Department                       |    89082 |   32 | 1977-01-21  | 2002-05-15 |  45000 |    100 | AB+        |
+| 413 | Raji        | raji@gmail.com  | Vice President                      |   800810 |   25 | 1998-07-10  | 2013-07-05 |  35000 |    110 | AB-        |
+| 407 | James       | james@gmail.com | Testing department                  |    69413 |   28 | 1990-02-27  | 2000-03-05 |  33000 |     50 | B+         |
+| 410 | sravs       | sravs@gmail.com | Manager                             |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
+| 406 | Akshitha    | akshi@gmail.com | clerk department                    |    70988 |   20 | 1997-09-01  | 2017-09-04 |  24000 |     50 | A-         |
+| 403 | Rajalakshmi | raju3@gmail.com | Purchasing department               |    70919 |   23 | 1998-03-03  | 2001-09-04 |  20000 |     20 | A+         |
+| 405 | Eswar       | eswar@gmail.com | Production department               |    70956 |   24 | 1998-04-10  | 2018-09-04 |  20000 |     40 | o+         |
+| 404 | pooja       | pooja@gmail.com | HR department                       |    70989 |   25 | 1993-02-03  | 2003-09-04 |  17000 |     30 | o+         |
+| 401 | Rani        | rani@gmail.com  | sales department                    |    70948 |   21 | 1997-07-16  | 2015-06-04 |  15000 |     10 | A-         |
+| 402 | Raja        | raja@gmail.com  | Research and Development department |    70914 |   20 | 1997-03-03  | 2011-06-04 |  13000 |     20 | b+         |
+| 417 | sam         | NULL            | NULL                                |    85799 |   23 | 1998-07-10  | NULL       |   7756 |     99 | NULL       |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+17 rows in set (0.08 sec)
+
+
+
+[7].Write a Query to display the employees whose salary is max salary, min salary, sum salary ?
+mysql> select min(salary),max(salary),avg(salary),sum(salary) from employee_table;
++-------------+-------------+-------------------+-------------+
+| min(salary) | max(salary) | avg(salary)       | sum(salary) |
++-------------+-------------+-------------------+-------------+
+|        7756 |      700000 | 74279.76470588235 |     1262756 |
++-------------+-------------+-------------------+-------------+
+1 row in set (0.00 sec)
+
+
+
+[8].Write a Query to display the employees of all the softer developer in dept number 20?
+mysql> select * from employee_table where designation='Developer' and deptId=20;
+Empty set (0.00 sec)
+
+
+
+[9].Write a Query to display the employees of heighest and lowest salary earned by salesman?
+mysql> select max(salary),min(salary) from employee_table where designation='sales';
++-------------+-------------+
+| max(salary) | min(salary) |
++-------------+-------------+
+|        NULL |        NULL |
++-------------+-------------+
+1 row in set (0.05 sec)
+
+
+[10].Write a Query to display the employees of total salary of all departments?
+mysql> select sum(salary) from employee_table where deptId in(10,20,30,40,50,60,70);
++-------------+
+| sum(salary) |
++-------------+
+|      275000 |
++-------------+
+1 row in set (0.00 sec)
+
+

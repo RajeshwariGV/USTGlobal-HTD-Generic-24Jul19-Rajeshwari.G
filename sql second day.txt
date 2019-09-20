@@ -1,0 +1,1052 @@
+
+
+DML
+*************************
+INSERT
+**************************************
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| tyss               |
+| ust_global         |
+| world              |
++--------------------+
+8 rows in set (0.56 sec)
+
+mysql>  show tables;
+ERROR 1046 (3D000): No database selected
+mysql> show UST_Global;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UST_Global' at line 1
+mysql> use databases;
+ERROR 1049 (42000): Unknown database 'databases'
+mysql> use UST_Global;
+Database changed
+mysql> show tables;
+Empty set (0.03 sec)
+
+mysql> use databases;
+ERROR 1049 (42000): Unknown database 'databases'
+mysql> use tyss;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_tyss |
++----------------+
+| student_info   |
++----------------+
+1 row in set (0.02 sec)
+
+mysql> select * from student_info;
++------+-------------+----------------+----------+
+| id   | studentName | emailId        | mobileNo |
++------+-------------+----------------+----------+
+|  101 | raji        | raji@gmail.com |    16557 |
+|  102 | raju        | raja@gmail.com |    16558 |
+|  102 | raju        | raja@gmail.com |    16558 |
++------+-------------+----------------+----------+
+3 rows in set (0.90 sec)
+
+mysql>
+
+UPDATE
+**************************
+update student_info set mobileNo=120008;
+
+slect * from student_info;
+mysql> select *from student_info;
++------+-------------+----------------+----------+
+| id   | studentName | emailId        | mobileNo |
++------+-------------+----------------+----------+
+|  101 | raji        | raji@gmail.com |   120008 |
+|  102 | raju        | raja@gmail.com |   120008 |
+|  102 | raju        | raja@gmail.com |   120008 |
++------+-------------+----------------+----------+
+3 rows in set (0.00 sec)
+
+
+
+DELETE
+*********************************
+delete from student_info;
+
+mysql> delete from student_info;
+Query OK, 3 rows affected (0.13 sec)
+
+mysql> select *from student_info;
+Empty set (0.00 sec)
+
+mysql> truncate table student_info;
+Query OK, 0 rows affected (0.44 sec)
+
+mysql> select * from student_info;
+Empty set (0.00 sec)
+
+
+DQL
+*****************************************************
+==>>only one command to retrive the data from database is:
+select
+===>>>>>>with the help of select we can perform retrival from the table in the three  diff ways 
+selection
+projection 
+joins
+
+
+PROJECTION
++++++++++++++++++++++++++++++
+SYNTAX@@@@
+select column name from ntable name
+insert into student_info values(408,'bhavya','bhavyas@gmail.com',1345),(413,'sidhu','sidhug@gmail.com',3768);
+Query OK, 2 rows affected (0.09 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from student_info;
++------+-------------+-------------------+----------+
+| id   | studentName | emailId           | mobileNo |
++------+-------------+-------------------+----------+
+|  408 | bhavya      | bhavyas@gmail.com |     1345 |
+|  413 | sidhu       | sidhug@gmail.com  |     3768 |
++------+-------------+-------------------+----------+
+2 rows in set (0.00 sec)
+
+
+
+JOINS
+*****************************************
+multiple of table at the same time is known as joins
+
+
+
+
+select * from Tablename
+
+#select a table from database and put under execution 
+we can pass table name as an argument
+#it is used to select coloumns or an expresions from the table which is under execution and it is 
+also responsible to execute the result set
+
+
+* select all the information
+
+first from will execute and select will execute
+
+SQL CLAUSES
+***********************************
+SQL consists of multiple clauses
+=>is class is subprogram which can accept arguments
+WHERE CLAUSE
+****************
+=> the where clause is used to filter records.
+=> the where clause is used to extract only those recordes that fulfill a specified condition.
+WHERE syntax:
+Select column1,columm2,..........From table_name
+where condition;
+
+
+select * from Customers
+where country = 'Mexico';
+ it extract the table from {1}
+where condition{2}
+select{3}
+
+<>WAQ to display id , name from the table?
+
+mysql> select * from student_info where id=413;
++------+-------------+------------------+----------+
+| id   | studentName | emailId          | mobileNo |
++------+-------------+------------------+----------+
+|  413 | sidhu       | sidhug@gmail.com |     3768 |
+
+==>> waq to update a colum for perticular id
+**************************************
+
+mysql> update student_info set mobileNo=73308 where id=413;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student_info;
++------+-------------+-------------------+----------+
+| id   | studentName | emailId           | mobileNo |
++------+-------------+-------------------+----------+
+|  408 | bhavya      | bhavyas@gmail.com |     1345 |
+|  413 | sidhu       | sidhug@gmail.com  |    73308 |
++------+-------------+-------------------+----------+
+2 rows in set (0.00 sec)
+note: where class doesnot support insert operation
+DELETE
+********************************
+to delete the perticular record synrtax is
+delete from student_info where id=256;
+
+TRUNCATE
+*************************888
+if we want to delete all the data from the table we will go to truncate command
+if we want to delete perticular record we go for delete.
+if we want to delete the structure and records of the table then we will go to "DROP"
+
+
+
+
+
+
++------+-------------+---------------
+
+             12-08-19
+
+=====>>>>>>....
+[1]write a query to give temporary name for bloodgroup column?
+select id,name,bloodgroup as bg from employee_table;
+[2]write a query to display employee name,designation,salary and his annual salary?
+select id,name,designation,salary,salary*12 as annual_salary from employee_table;
+[3]write a query to give the aliase name for all the colums 
+
+mysql> select id empid,name empname,designation department,mobileno phoneno,age currentage,dateofBirth dob,doj Doj,salary sal,deptId dptid,bloodgroup bg from employee_table;
+  
+
+Distinct
+=========================
+it wil give unique results from the table
+which is not duplicate or null
+=>the select DISTINCT statement is used to return only different values
+1] SELECT DISTINCT column1,column2,...............FROM table_name;
+
+
+=>write a query to display the unique deptno from employee_table;
+select distinct deptid from employee_table;
+=>if more than one argument is passed to distinct it will remove the combination of coloumn duplicate.
+=> write a query to display unique value of designation as well as deptid?
+=>write a query to display distinct deptId,designation,age from employee_table?
+ select distinct designation,deptId from employee_table;
+
+               OPERATORS
+==========================================================
+1.arithmetic
+2.coparision
+3.logical
+4.special
+1.ARITHMETIC OPERATERS:
++,-,*,/,
+=>write a query to diplay the salary ,name and sal inc by 5000?
+sal+5000
+=>write a query to diplay the salary ,name and sal inc by 5000?
+sal-5000
+=>write a query to diplay the salary ,name and annual sal?
+sal*12
+=>write a query to diplay the salary ,name and per day sal?
+ select 10%3;
+
+
+
+COMPARISION OPERATORS
+============================================
+operator                                                      description                                Example
+=    =,!=,<>,<,>,<=,>=,
+
+=>write a query to display all the records excluding dep 10?
+select * from employee_table where deptId !=10;
+=> write  a query to display name,designation ,age,whose sal is> 33000?
+
+=> write a query to display name,designation,age,sal<=22000;
+select name,designation,mobileno,age,salary from employee_table where salary<=22000;
+
+=> write a query to display name,designation,age,sal>=22000;
+
+
+
+LOGICAL OPERATORS
+===================================
+AND         the AND operator allows the existence of multiple condition in an SQL statements WHERE clause
+NOT         the not operators reverses the meaning of yhe logical operator with which it is used.this is negate operator.
+OR           the OR operator is used to combine multiple conditions in an sql statements WHERE clause
+
+WHERE  A is a condition 1 and B is condition 2 
+                         AND
+case1: if the first conditon is false the and will written false
+case2: if the first conditon is true then the result depends upon the second condition
+case3: it the both the condition is true then the result is true
+          
+=> write a query to display all the record who is working in deptno=20 only if sal is > 22000?
+select * from employee_table where deptId=20 and salary>12000;
+=> write a query to display all the records of employee_table who is working as salesman and data of birth is 1994?
+select * from employee_table where job='salesman' and DateofBirth=1994;
+=>write a query to display all the records of employee table whose salary = 10000 as well as whose desingnation is HR?
+select * from employee_table where salary=10000 and designation='Analyst';
+
+
+              OR
+===============================================
+case1:   If the first condition is true the result of OR operater is true without evaluating the second condition
+case2:   If the first condition is false then the result will dependupon the second condition if the second condition is true 
+         then only the output is true.
+
+SYNTAX:  select * from Table_name where column_name = value or column_name=value;
+
+=>write a query to display all the records who is working in deptno=20 or deptno=60;
+select * from employee_table where deptId=20 or deptId=60;
+
+=>write a query to display name , salary, emailId , who is working as a tester or age is > 20?
+select name,salary,emailId from employee_table where designation='Testing' or age>20;
+
+
+=>write a query to display the name of all employee who is working as a manager in deptno=30 or whose 
+designation is clerk where salary is>10000?
+select * from employee_table where designation ='HR' and deptId=20 or designation='Clerk' and salary > 10000;
+Empty set (0.00 sec)
+=>
+
+we can use Or AND operator at the same time
+=>write a query to display salary=10000 and designation=manager?
+
+{{{{{{{{{{first and condition will execute and then the OR condition will execute}}}}}}}
+
+SYNTAX: select * from employee_table where not column_name=value;
+
+=>write a query to display all the employee details whose designation is not in HR?
+select * from employee_table where not designation='HR';
+
+
+=>write a query to display all the employee excluding deptId=20 or deptId=30?
+select * from employee_table where not (deptId=20 or deptId=30);
+=> write a query to display all the employee details  excluding sales man who all are working in deptId=40?
+
+
+=>write a query to display all the employee deatails who is working as a salesman for deptId=20 or 30?
+select * from employee_table where designation='HR' and (deptId=30 or deptId=100);
+
+=> write a query to display all the employee who is working in deptId=20 only if their salary > 10000 and < 25000
+inculding 10000 and 25000?
+select * from employee_table where deptId=20 and( salary > 10000 and salary<25000);
+
+=>write a query to display all the records who is working as a softwaredeveloper and dob in 1994?
+select * from employee_table where designation='HR' and DateofBirth='1993-02-03';
+=> write a query to display the employee who is working in deptId=20 or deptId=30?
+ select * from employee_table where deptId in(10,20,30);
+
+=>write a query to display annual salary if the designation is null?
+select name,salary from employee_table where designation is null;
+
+
+
+
+
+             SPECIAL OPERATORS
+=========================================================================
+                  IN
+* IN - it is used for evaluating multile values
+SYNTAX: select * from table_name where column_name IN(list of values);
+
+=>write a query to display the employee who is working in deptId=20 and deptId=30 deptId=10?
+select * from employee_table where deptId in(10,20,30);
+=> write a query to display all the employee details whose designation is HR,tester,analyst?
+select * from employee_table where designation in('HR','Manager');
+=>write a query to display all the employee details who are working as a clerk in deptId =20,30,40,60,70?
+select * from employee_table where designation='clerk' and deptId in(20,30,60,70);
+              NOTIN
+* NOTIN operator is a multivalue operator it will execute the given records
+SYNTAX:  select * from table_name where column not in(value1,value2............);
+
+=>write a query to display all the employee details who are working as a clerk not in deptId =20,30,40,60,70?
+ select * from employee_table where designation='clerk' and deptId not in(20,30,60,70);
+=> write a query to display all the employee who are working in deptId =20,30,40 excluding salesman or analyst?
+select * from employee_table where deptId in(20,30,40) and designation not in('HR' or 'Manager');
+
+                         BETWEEN
+*BETWEEN - it is used for searching based on range of values.
+SYNTAX : select * from table_name where column_name between (value1 and value2..............);
+       select * from table_name where column_name between lower_limit and upper_limit;
+=> write a query to display all the employee whose salary is 10000 to 20000?
+select * from employee_table where salary between 10000 and 20000;
+
+=>write a query to display all the details of employee who hired in 2017 ?
+ select * from employee_table where Doj between '2017-01-01' and '2017-12-31';
+
+=> write a query to  display all the records of employee excluding who is hired in 2019?
+ select * from employee_table where Doj not between '2019-01-01' and '2019-12-31';
+
+=> write a query to diplay employee name,salary, deptId of all the employees who is working 
+in deptId 10 or 20 excluding whose salary >=15000 and salary<=50000?
+ >>select name,salary,deptId from employee_table where deptId in(10,20) and salary not between 15000 and 50000;
+======================================================================
+                            IS OPERATOR
+========================================================================
+*is operator is used to check the null value
+*if the record is null it will give true
+*if the record is notnull it will give false
+
+
+LIKE OPERATOR
+============================================
+*like operator is used to perform pattern matching
+ Syntax: select * from table_name where column_name like '-------------';
+Character are of two types
+1> ordinary character
+2>special character
+1>>ordinary characters
+normal type of charaters
+
+specialcharacters is also known as wild card character
+1>% -- matches  0 or 'n' characters
+SYNTAX: select * from table_name where column_name like '%/_';
+
+2>_ -- matches exactly one character
+
+
+=> write a query to display all the employee name whose name starts with s?
+select * from employee_table where name like 's%';
+=> write a query to diaplay all the details of employee whose name contains only 4 character?
+
+select * from employee_table where name like '_____';
+=>write a query to diplay dob,boj,salary,name whose name start with s and end with s?
+select name,age,DateofBirth,Doj,salary from employee_table where name like 's%s';
+=> write a query to display all the records of employee whose second character is i?
+select * from employee_table where name like '_i%';
+=> write a query to display all the information of employee where designation have atleast 2ee's?(not consigative)
+select * from employee_table where designation like '%e%e%e';
+
+=>write a query to select all the strings of len 5  whose first character starts with s and second last character l?
+
+mysql> select * from employee_table where name like 's%h';
+
+=> write a query to display all the details of employee if the name of employee start with r character or start with z 
+charater?
+select * from employee_table where name like 'r%' or name like 'z%';
+
+=> write a query to display all the records of employee whose name third character should be c and 6 th chracter should be
+i?
+
+                 NOtLIKE
+========================================
+ 
+not like operater is used to select all the string which should not match with the given string;
+=> write a query to display  employee name excluding whose name is start with A?
+
+===============================================
+                    FUNCTIONS
+================================================
+* Function is block of code which performs task
+ THE ATTRIBUTES OF FUNCTION
+=====================================
+* it has input argument,function name and return type
+1> scalar function is also  know as single function
+2> aggrigate function is also known as multirow function
+
+           AGGREGATE FUNCTION
+======================================================
+*In aggregate fun we will pass more than one input but the output is only one.
+1> AVG()-return average value
+2> count- counts no of rows
+3> Max- retuens maximum value of the selected column
+4> Min- returns minimum value of the selected column
+5>Sum- returns sum of all the values of the selected column
+       AVG()
+====================================================
+=> write a to display the avg salary of employee?
+select avg(salary) from employee_table;
+=>write a quiry to display min salry,max salary, sum of all the salary?
+
+
+        SINGLEROW FUNCTION
+===============================================
+1> uppercase - it converts the value of a field to uppercase
+2> lower - it converts the value of a field to lower case
+3> length - fu
+4> concat
+5> reverse
+
+
+
+mysql> insert into employee_table (id,name,mobileNo,age,salary,DateofBirth,deptId) values(417,'sam',85799,23,7756,'1998-07-10',99);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from employee_table;
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name        | emailId         | designation                         | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| 401 | Rani        | rani@gmail.com  | sales department                    |    70948 |   21 | 1997-07-16  | 2015-06-04 |  15000 |     10 | A-         |
+| 402 | Raja        | raja@gmail.com  | Research and Development department |    70914 |   20 | 1997-03-03  | 2011-06-04 |  13000 |     20 | b+         |
+| 403 | Rajalakshmi | raju3@gmail.com | Purchasing department               |    70919 |   23 | 1998-03-03  | 2001-09-04 |  20000 |     20 | A+         |
+| 404 | pooja       | pooja@gmail.com | HR department                       |    70989 |   25 | 1993-02-03  | 2003-09-04 |  17000 |     30 | o+         |
+| 405 | Eswar       | eswar@gmail.com | Production department               |    70956 |   24 | 1998-04-10  | 2018-09-04 |  20000 |     40 | o+         |
+| 406 | Akshitha    | akshi@gmail.com | clerk department                    |    70988 |   20 | 1997-09-01  | 2017-09-04 |  24000 |     50 | A-         |
+| 407 | James       | james@gmail.com | Testing department                  |    69413 |   28 | 1990-02-27  | 2000-03-05 |  33000 |     50 | B+         |
+| 408 | Rose        | rose@gmail.com  | Marketing department                |    73413 |   29 | 1989-07-02  | 2010-12-28 |  45000 |     60 | AB+        |
+| 409 | sidhu       | sidhu@gmail.com | Manager                             |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 410 | sravs       | sravs@gmail.com | Manager                             |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
+| 411 | smith       | smith@gmail.com | production Department               |    73082 |   30 | 1980-04-11  | 2000-03-27 |  45000 |     90 | AB-        |
+| 412 | lilly       | lilly@gmail.com | HR Department                       |    89082 |   32 | 1977-01-21  | 2002-05-15 |  45000 |    100 | AB+        |
+| 413 | Raji        | raji@gmail.com  | Vice President                      |   800810 |   25 | 1998-07-10  | 2013-07-05 |  35000 |    110 | AB-        |
+| 414 | Vinni       | vinni@gmail.com | Purchasing Department               |    77368 |   36 | 1999-01-06  | 2015-09-07 |  55000 |    111 | o+         |
+| 415 | sanju       | sanju@gmail.com | clerk Department                    |    80290 |   31 | 1967-12-09  | 2000-03-28 | 100000 |    112 | B+         |
+| 416 | Rishi       | rishi@gmail.com | production Department               |    80296 |   42 | 1950-05-25  | 2007-03-30 | 700000 |    113 | AB+        |
+| 417 | sam         | NULL            | NULL                                |    85799 |   23 | 1998-07-10  | NULL       |   7756 |     99 | NULL       |
+  +-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+17 rows in set (0.00 sec)
+
+                                  16-08-2019       {{{{{{{{{ FUNCTIONS }}}}}}}}}}}}}
+============ ===== ====   ======================================================================================================
+
+[1]=> write a query to display no of employees had doj after 2016?
+
+mysql> select count(*) from employee_table where Doj > '2015-09-07';
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+[2]=>WAQ to display avg sal and the heigest salary of dept 20,30,40?
+mysql> select avg(salary),max(salary) from employee_table where deptId in(20,30,40);
++-------------+-------------+
+| avg(salary) | max(salary) |
++-------------+-------------+
+|       17500 |       20000 |
++-------------+-------------+
+1 row in set (0.00 sec)
+[3]=> WAQ to display date of first and last hired employee?
+mysql> select min(Doj),max(Doj) from employee_table;
++------------+------------+
+| min(Doj)   | max(Doj)   |
++------------+------------+
+| 2000-03-05 | 2019-09-22 |
++------------+------------+
+1 row in set (0.03 sec)
+mysql> select min(Doj) First ,max(Doj) Last from employee_table;
++------------+------------+
+| First      | Last       |
++------------+------------+
+| 2000-03-05 | 2019-09-22 |
++------------+------------+
+1 row in set (0.00 sec)
+
+
+
+SCALAR FUNCTIONS:
+=> => case manipulation 
+    1] upper  -  it onverts the value of a field to uppercase
+    2] lower  -   it coverts the value of a field to lower case
+    3] initcap  -   it is not supported in mysql it is supported in oracle
+==>  CHARACTER MANIPULATION
+  1] length================ fun returns the length of the value in a text field.
+=> WAQ to display lenth of name in employee table?
+mysql> select length(name) from employee_table;
++--------------+
+| length(name) |
++--------------+
+|            4 |
+|            4 |
+|           11 |
+|            5 |
+|            5 |
+|            8 |
+|            5 |
+|            4 |
+|            5 |
+|            5 |
+|            5 |
+|            5 |
+|            4 |
+|            5 |
+|            5 |
+|            5 |
+|            3 |
++--------------+
+17 rows in set (0.05 sec)
+==>  2]CONCAT()============ it is used to concatinate two strings.
+=======> WAQ to merge name and salary?
+mysql> select concat(name, salary) from employee_table;
++----------------------+
+| concat(name, salary) |
++----------------------+
+| Rani15000            |
+| Raja13000            |
+| Rajalakshmi20000     |
+| pooja17000           |
+| Eswar20000           |
+| Akshitha24000        |
+| James33000           |
+| Rose45000            |
+| sidhu55000           |
+| sravs33000           |
+| smith45000           |
+| lilly45000           |
+| Raji35000            |
+| Vinni55000           |
+| sanju100000          |
+| Rishi700000          |
+| sam7756              |
++----------------------+
+17 rows in set (0.00 sec)
+
+=>> REVERSE() -- function is use to reverse  a string ?
+
+=> WAQ to reverse name?
+
+mysql> select reverse(name) from employee_table;
++---------------+
+| reverse(name) |
++---------------+
+| inaR          |
+| ajaR          |
+| imhskalajaR   |
+| ajoop         |
+| rawsE         |
+| ahtihskA      |
+| semaJ         |
+| esoR          |
+| uhdis         |
+| svars         |
+| htims         |
+| yllil         |
+| ijaR          |
+| inniV         |
+| ujnas         |
+| ihsiR         |
+| mas           |
++---------------+
+17 rows in set (0.00 sec)
+
+
+
+
+==>>> It is a function used to extract a string from a give string
+   *it can accept tree arguments
+
+
+SYNTAX: SELECT substr(string,position,length) from table_name
+
+ position= it is number from where which specify the number in a string
+  length= it specify the length of the new string
+
+===>>>WAQ to  display the name of all employee only  the three character?
+mysql> select substr(name,1,3) from employee_table;
++------------------+
+| substr(name,1,3) |
++------------------+
+| Ran              |
+| Raj              |
+| Raj              |
+| poo              |
+| Esw              |
+| Aks              |
+| Jam              |
+| Ros              |
+| sid              |
+| sra              |
+| smi              |
+| lil              |
+| Raj              |
+| Vin              |
+| san              |
+| Ris              |
+| sam              |
++------------------+
+17 rows in set (0.05 sec)
+==>>>>>>>> WAQ to display the all details of employee whose name begin with consonant(except a.e.i.o.u)?
+mysql> select substr(name,1,1) not in('A','E','I','O','u') from employee_table;
++----------------------------------------------+
+| substr(name,1,1) not in('A','E','I','O','u') |
++----------------------------------------------+
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            0 |
+|                                            0 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
+|                                            1 |
++----------------------------------------------+
+17 rows in set (0.00 sec)
+mysql> select * from employee_table where substr(name,1,1) not in('a','e','i','o','u');
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| id  | name        | emailId         | designation                         | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| 401 | Rani        | rani@gmail.com  | sales department                    |    70948 |   21 | 1997-07-16  | 2015-06-04 |  15000 |     10 | A-         |
+| 402 | Raja        | raja@gmail.com  | Research and Development department |    70914 |   20 | 1997-03-03  | 2011-06-04 |  13000 |     20 | b+         |
+| 403 | Rajalakshmi | raju3@gmail.com | Purchasing department               |    70919 |   23 | 1998-03-03  | 2001-09-04 |  20000 |     20 | A+         |
+| 404 | pooja       | pooja@gmail.com | HR department                       |    70989 |   25 | 1993-02-03  | 2003-09-04 |  17000 |     30 | o+         |
+| 407 | James       | james@gmail.com | Testing department                  |    69413 |   28 | 1990-02-27  | 2000-03-05 |  33000 |     50 | B+         |
+| 408 | Rose        | rose@gmail.com  | Marketing department                |    73413 |   29 | 1989-07-02  | 2010-12-28 |  45000 |     60 | AB+        |
+| 409 | sidhu       | sidhu@gmail.com | Manager                             |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 410 | sravs       | sravs@gmail.com | Manager                             |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
+| 411 | smith       | smith@gmail.com | production Department               |    73082 |   30 | 1980-04-11  | 2000-03-27 |  45000 |     90 | AB-        |
+| 412 | lilly       | lilly@gmail.com | HR Department                       |    89082 |   32 | 1977-01-21  | 2002-05-15 |  45000 |    100 | AB+        |
+| 413 | Raji        | raji@gmail.com  | Vice President                      |   800810 |   25 | 1998-07-10  | 2013-07-05 |  35000 |    110 | AB-        |
+| 414 | Vinni       | vinni@gmail.com | Purchasing Department               |    77368 |   36 | 1999-01-06  | 2015-09-07 |  55000 |    111 | o+         |
+| 415 | sanju       | sanju@gmail.com | clerk Department                    |    80290 |   31 | 1967-12-09  | 2000-03-28 | 100000 |    112 | B+         |
+| 416 | Rishi       | rishi@gmail.com | production Department               |    80296 |   42 | 1950-05-25  | 2007-03-30 | 700000 |    113 | AB+        |
+| 417 | sam         | NULL            | NULL                                |    85799 |   23 | 1998-07-10  | NULL       |   7756 |     99 | NULL       |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+15 rows in set (0.00 sec)
+=====>>>>>>>>>>>>>> 
+            INSTR()============== it is used to check  whether a string is present into the givenstring
+
+*if a substring is not present in the string then the function will  retrn 0  
+SYNTAX:select instr(string,substring) from table_name;
+
+substring -it is a string in which substr has to be search
+
+===>>> WAQ to search the position of 'a' in name colum?
+mysql> select instr(name,'a') from employee_table;
++-----------------+
+| instr(name,'a') |
++-----------------+
+|               2 |
+|               2 |
+|               2 |
+|               5 |
+|               4 |
+|               1 |
+|               2 |
+|               0 |
+|               0 |
+|               3 |
+|               0 |
+|               0 |
+|               2 |
+|               0 |
+|               2 |
+|               0 |
+|               2 |
++-----------------+
+17 rows in set (0.03 sec)
+          REPLAC
+=======================================
+=> it is used to replace a character or a string in a given string
+ SYNTAX;
+replace(string,sustring,substring)
+=>>>>>>>>>. WAQ to replace where a is present in the with z?
+mysql> select replace(name,'a','z') from employee_table;
++-----------------------+
+| replace(name,'a','z') |
++-----------------------+
+| Rzni                  |
+| Rzjz                  |
+| Rzjzlzkshmi           |
+| poojz                 |
+| Eswzr                 |
+| Akshithz              |
+| Jzmes                 |
+| Rose                  |
+| sidhu                 |
+| srzvs                 |
+| smith                 |
+| lilly                 |
+| Rzji                  |
+| Vinni                 |
+| sznju                 |
+| Rishi                 |
+| szm                   |
++-----------------------+
+17 rows in set (0.00 sec)
+==>>>>>. WAQ to display number of employee who  is working in deptId=20 and salary>15000?
+
+mysql> select count(*) from employee_table where deptId=20 and salary=15000;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+===============================================Done ==============================================
+
+
+                             Group by clause
+======================================================
+* the group by statement group rows that have the same values into summary rows.
+* the group by statement is often used with aggregate functions (count, max,min,sum,avg) to group the 
+result-set by one or more columns
+
+SYNTAX:   select column name(s)  4                 ex:
+                                                           select count(*)
+           from table_name 1                              from employee_table
+          where condition  2                               group by deptId;
+           group by column_name(s); 3
+
+Group by:   group by clause executes row by row 
+ *after the execution of group by the records are grouped.
+therefore , all the clause will execute after the execution of group by clayse
+group by clause is often executed by aggregate fun
+
+===> WAQ to display heighest salary in each deptId?
+mysql> select max(salary),deptId,count(*) from employee_table group by deptId;
++-------------+--------+----------+
+| max(salary) | deptId | count(*) |
++-------------+--------+----------+
+|       15000 |     10 |        1 |
+|       20000 |     20 |        2 |
+|       17000 |     30 |        1 |
+|       20000 |     40 |        1 |
+|       33000 |     50 |        2 |
+|       45000 |     60 |        1 |
+|       55000 |     70 |        2 |
+|       45000 |     90 |        1 |
+|        7756 |     99 |        1 |
+|       45000 |    100 |        1 |
+|       35000 |    110 |        1 |
+|       55000 |    111 |        1 |
+|      100000 |    112 |        1 |
+|      700000 |    113 |        1 |
++-------------+--------+----------+
+14 rows in set (0.00 sec)
+
+==>. WAQ to display no of   software Developers(Manager)working in each deptId?
+mysql> select count(*) ,deptId from employee_info where designation='Manager' group by deptId;
+Empty set (0.08 sec)
+
+===> WAQ to display no of employee Hired on each date?
+mysql> select count(*) from employee_table group by Doj;
++----------+
+| count(*) |
++----------+
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
++----------+
+17 rows in set (0.00 sec)
+===> WAQ to display min salary in each designation?
+
+mysql> select min(salary) from employee_table group by designation;
++-------------+
+| min(salary) |
++-------------+
+|        7756 |
+|       24000 |
+|       17000 |
+|       33000 |
+|       45000 |
+|       20000 |
+|       20000 |
+|       13000 |
+|       15000 |
+|       33000 |
+|       35000 |
++-------------+
+11 rows in set (0.00 sec)
+mysql> select min(salary),designation from employee_table group by designation;
++-------------+-------------------------------------+
+| min(salary) | designation                         |
++-------------+-------------------------------------+
+|        7756 | NULL                                |
+|       24000 | clerk department                    |
+|       17000 | HR department                       |
+|       33000 | Manager                             |
+|       45000 | Marketing department                |
+|       20000 | Production department               |
+|       20000 | Purchasing department               |
+|       13000 | Research and Development department |
+|       15000 | sales department                    |
+|       33000 | Testing department                  |
+|       35000 | Vice President                      |
++-------------+-------------------------------------+
+11 rows in set (0.00 sec)
+
+=======================================================================================
+                        HAVING CLAUSE
+=======================================================================================
+*The having clause is often used with the GROUP BY clause to filter groups based on specified
+condition
+*In HAVING clause we can use only use an column i.e., used in group by clause.
+SYNTAX:
+  Select column_name(s) from table_name where condition group by column_name(s) Having condition:
+:::::::::::::::::order of execution::::::::::::::::::
+1>from 
+2>where 
+3>group by 
+4>having
+5>select
+<>>> 1.having clause executes after rhe execution of group by clause.therefore ,it checks for the given condition after grouping
+  2.since it executes after grouping ,having clause executes group by group
+  3.Having clause can be used in one column that is used  in Group by.
+===>>.WAQ to display deptId which has atleast 4 working employees?
+mysql> select deptId from employee_table group by deptId having count(*)>=4;
+Empty set (0.00 sec)
+======>WAQ to display to display deptId which has total salary>20000?
+mysql> select deptId,sum(salary) from employee_table group by deptId having sum(salary)>20000;
++--------+-------------+
+| deptId | sum(salary) |
++--------+-------------+
+|     20 |       33000 |
+|     50 |       57000 |
+|     60 |       45000 |
+|     70 |       88000 |
+|     90 |       45000 |
+|    100 |       45000 |
+|    110 |       35000 |
+|    111 |       55000 |
+|    112 |      100000 |
+|    113 |      700000 |
++--------+-------------+
+10 rows in set (0.00 sec)
+===>>>WAQ to display depId and avg salary of all the depts whose avg salary is > 20000 excluding the employee whose 
+name begins with s?
+mysql> select deptId,avg(salary),name from employee_table where name not like's%' group by deptId having avg(salary)>20000;
++--------+-------------+----------+
+| deptId | avg(salary) | name     |
++--------+-------------+----------+
+|     50 |       28500 | Akshitha |
+|     60 |       45000 | Rose     |
+|    100 |       45000 | lilly    |
+|    110 |       35000 | Raji     |
+|    111 |       55000 | Vinni    |
+|    113 |      700000 | Rishi    |
++--------+-------------+----------+
+6 rows in set (0.00 sec)
+========================================================================================
+                       ORDER BY CLAUSE
+========================================================================================
+* The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+*    The ORDER BY keyword sortsthe records in ascending order by default .To sort the records 
+in descending order , use the DESc keyword.
+ORDER BY SYNTAX:
+
+SELECT column1,column2,.....FROM table_name
+ORDER BY column1,column2,.........ASC|DESC;
+
+Order of execution for ORDER BY CLAUSE::
+===========================
+1> from
+2> where
+3>group by
+4>having
+5> select
+6> order by
+
+===>>>> WAQ to display all the details where salary details should be in desc order?
+musql> select * from employee_info order by salary desc;
+-----+------------+
+| id  | name        | emailId         | designation                         | mobileno | Age  | DateofBirth | Doj        | salary | deptId | bloodgroup |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+| 416 | Rishi       | rishi@gmail.com | production Department               |    80296 |   42 | 1950-05-25  | 2007-03-30 | 700000 |    113 | AB+        |
+| 415 | sanju       | sanju@gmail.com | clerk Department                    |    80290 |   31 | 1967-12-09  | 2000-03-28 | 100000 |    112 | B+         |
+| 409 | sidhu       | sidhu@gmail.com | Manager                             |    62110 |   22 | 1997-09-04  | 2019-02-12 |  55000 |     70 | B+         |
+| 414 | Vinni       | vinni@gmail.com | Purchasing Department               |    77368 |   36 | 1999-01-06  | 2015-09-07 |  55000 |    111 | o+         |
+| 408 | Rose        | rose@gmail.com  | Marketing department                |    73413 |   29 | 1989-07-02  | 2010-12-28 |  45000 |     60 | AB+        |
+| 411 | smith       | smith@gmail.com | production Department               |    73082 |   30 | 1980-04-11  | 2000-03-27 |  45000 |     90 | AB-        |
+| 412 | lilly       | lilly@gmail.com | HR Department                       |    89082 |   32 | 1977-01-21  | 2002-05-15 |  45000 |    100 | AB+        |
+| 413 | Raji        | raji@gmail.com  | Vice President                      |   800810 |   25 | 1998-07-10  | 2013-07-05 |  35000 |    110 | AB-        |
+| 407 | James       | james@gmail.com | Testing department                  |    69413 |   28 | 1990-02-27  | 2000-03-05 |  33000 |     50 | B+         |
+| 410 | sravs       | sravs@gmail.com | Manager                             |    73008 |   21 | 1998-10-07  | 2019-09-22 |  33000 |     70 | B+         |
+| 406 | Akshitha    | akshi@gmail.com | clerk department                    |    70988 |   20 | 1997-09-01  | 2017-09-04 |  24000 |     50 | A-         |
+| 403 | Rajalakshmi | raju3@gmail.com | Purchasing department               |    70919 |   23 | 1998-03-03  | 2001-09-04 |  20000 |     20 | A+         |
+| 405 | Eswar       | eswar@gmail.com | Production department               |    70956 |   24 | 1998-04-10  | 2018-09-04 |  20000 |     40 | o+         |
+| 404 | pooja       | pooja@gmail.com | HR department                       |    70989 |   25 | 1993-02-03  | 2003-09-04 |  17000 |     30 | o+         |
+| 401 | Rani        | rani@gmail.com  | sales department                    |    70948 |   21 | 1997-07-16  | 2015-06-04 |  15000 |     10 | A-         |
+| 402 | Raja        | raja@gmail.com  | Research and Development department |    70914 |   20 | 1997-03-03  | 2011-06-04 |  13000 |     20 | b+         |
+| 417 | sam         | NULL            | NULL                                |    85799 |   23 | 1998-07-10  | NULL       |   7756 |     99 | NULL       |
++-----+-------------+-----------------+-------------------------------------+----------+------+-------------+------------+--------+--------+------------+
+17 rows in set (0.00 sec)
+==>>>> order by clause always executes after the execution of select clause 
+* order by clause should be the last clause to be written in the syntax.
+* if the group by clause is used then order by clause we can use aggregate function or multi row function 
+and only the column name which is used in group by clause 
+
+====> WAQ to display employee name, designation,Doj for all employees who are working in either one of 
+the departments 10,20,50,60 sort the records in desc order of their salary? 
+mysql> select name,designation,Doj,salary from employee_table where deptId in(10,20,50,60) group by salary order by salary desc;
++-------------+-------------------------------------+------------+--------+
+| name        | designation                         | Doj        | salary |
++-------------+-------------------------------------+------------+--------+
+| Rose        | Marketing department                | 2010-12-28 |  45000 |
+| James       | Testing department                  | 2000-03-05 |  33000 |
+| Akshitha    | clerk department                    | 2017-09-04 |  24000 |
+| Rajalakshmi | Purchasing department               | 2001-09-04 |  20000 |
+| Rani        | sales department                    | 2015-06-04 |  15000 |
+| Raja        | Research and Development department | 2011-06-04 |  13000 |
++-------------+-------------------------------------+------------+--------+
+6 rows in set (0.03 sec)
+===>>> WAQ to display deptId along with no of employee in it?
+mysql> select deptId,count(*) from employee_table group by deptId;
++--------+----------+
+| deptId | count(*) |
++--------+----------+
+|     10 |        1 |
+|     20 |        2 |
+|     30 |        1 |
+|     40 |        1 |
+|     50 |        2 |
+|     60 |        1 |
+|     70 |        2 |
+|     90 |        1 |
+|     99 |        1 |
+|    100 |        1 |
+|    110 |        1 |
+|    111 |        1 |
+|    112 |        1 |
+|    113 |        1 |
++--------+----------+
+14 rows in set (0.00 sec)
+
+=>WAQ to display all the details of employee whose designation is tester and software Developer?
+
+
+=============================================================================================
+                              SUBQUERY it is also known as (NESTED QUERY)or INNER QUERY
+=============================================================================================
+ *A query inside another query is known as subquery.
+ * sub query is also an another wat to fetch the data from multiple of tables.
+*  subquery must be enclosed with ()
+*   always inner query executed first and the output of
+
+*inner query is taken as input for the outer query 
+*the final result we will get from the outer query
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
