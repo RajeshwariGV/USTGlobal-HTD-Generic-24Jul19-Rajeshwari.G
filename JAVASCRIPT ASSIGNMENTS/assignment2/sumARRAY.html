@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sum of array</title>
+</head>
+<body>
+    <script>
+       var value=[10,20];
+       var sum=0;
+        var arrays=function(value){
+        
+            for(var i=0;i<value.length;i++)
+            {
+                sum=sum+value[i];
+            }
+            return sum;
+        }
+        arrays(value)
+        console.log(sum);
+
+        var value=[10,20];
+       var sum=0;
+        function arrays(value){
+        
+            for(var i=0;i<value.length;i++)
+            {
+                sum=sum+value[i];
+            }
+            return sum;
+        }
+        arrays(value)
+        console.log(sum);
+        console.log('=======');
+
+        var value=[10,20];
+       var sum=0;
+        (function(value){
+        
+            for(var i=0;i<value.length;i++)
+            {
+                sum=sum+value[i];
+            }
+            return sum;
+        }(value))
+        
+
+        var value=[10,20];
+       var sum=0;
+        var arrays=(value)=>{
+        
+            for(var i=0;i<value.length;i++)
+            {
+                sum=sum+value[i];
+            }
+            return sum;
+        }
+        arrays(value)
+        console.log(sum);
+        console.log(sum);
+    </script>
+</body>
+</html>

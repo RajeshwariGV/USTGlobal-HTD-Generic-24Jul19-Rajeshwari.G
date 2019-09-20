@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prime</title>
+</head>
+<body>
+    <script>
+        //anonymous
+        var prime=function(num){
+            if(num%2==0 || num==0||num==1)
+            {
+                console.log('given is not prime='+num)
+            }
+            else
+            {
+                console.log('given is prime='+num)
+            }
+        }
+        prime(8);
+        console.log('=======');
+
+        (function(num){
+            if(num%2==0 || num==0||num==1)
+            {
+                console.log('given is not prime='+num)
+            }
+            else
+            {
+                console.log('given is prime='+num)
+            }
+        }(5));
+        console.log('=======');
+
+        function prime(num){
+            if(num%2==0 || num==0||num==1)
+            {
+                console.log('given is not prime='+num)
+            }
+            else
+            {
+                console.log('given is prime='+num)
+            }
+        }
+        prime(2);
+        console.log('=======');
+
+        var prime=(num)=>{
+            if(num%2==0 || num==0||num==1)
+            {
+                console.log('given is not prime='+num)
+            }
+            else
+            {
+                console.log('given is prime='+num)
+            }
+        }
+        prime(7);
+    </script>
+    
+</body>
+</html>

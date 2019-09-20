@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>circumference</title>
+</head>
+<body>
+    <script>
+        //anonymous
+        var circle=function(radius){
+            circumference=(Math.PI)*2*radius;
+        }
+        circle(4);
+        console.log('cirumfernce of circle'+circumference)
+        console.log('=======');
+           //named
+           function circle(radius){
+            circumference=(Math.PI)*2*radius;
+        }
+        console.log('=======');
+        circle(5);
+        console.log('cirumfernce of circle'+circumference)
+        console.log('=======');
+          //self
+          (function(radius){
+            circumference=(Math.PI)*2*radius;
+        }(3));
+        console.log('cirumfernce of circle'+circumference)
+        console.log('=======');
+      //fat arrow
+      var circle=(radius)=>{
+            circumference=(Math.PI)*2*radius;
+        }
+        circle(8);
+        console.log('cirumfernce of circle'+circumference)
+        console.log('=======');
+     </script>
+
+    
+</body>
+</html>
