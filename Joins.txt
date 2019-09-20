@@ -1,0 +1,166 @@
+Cartian join
+==============================================================================================================================
+
+In a table from letf side table  will join with each and every row of another table in to the right side.
+============================================================================================================================
+Innerjoins:
+==============================================================================================================================
+Joining two tables with the help of joint coloumns is known as Inner Joins.
+
+SYNTAX:
+select * from Table1 Inner Join table2 on condition in Mysql
+
+
+SYNTAX for ORACLE:
+
+select * fron table, table where condition.
+
+inner joinsquery
+
+select * from employee_info inner join department_info on employee_info.deptid=department_info.deptid
+
+
+OUTER JOINS
+==================================================================================================================================
+
+=>left outer join
+=>Right outer joins
+=>full outer joins
+
+left outer join
+===================================================================
+left outer join gives inner join plus a matched record of left table
+
+the record do not have pair in the opposite table w.r.t join in left table
+
+
+select * from table1 leftoter join table2 on condition(ANSII)mysql
+select * from table1,table2 where table1 column_name(+)= table2 column_name(+); oracle
+
+
+select * from employee_info e right outer join department d on e.deptid=d.deptid;
+
+
+fullouter join:
+               => it gives inner join as well as all the records from both the 
+
+if we want to use  leftouter join we go for unoin.
+
+table who do not have any pair(common)
+
+
+
+===================================================================================================
+                         KEY ATTRIBUTES
+===================================================================================================
+=>In order to learn we need to know about key attributes and also the functional dependencies
+
+Key in RDBMS:
+-------------
+           1>Key Attributes: It is used to find an attribute which we can uniqley detemine a record in a table
+                  
+           2>Non-key attributes: All the attributes except key attributes are know as non-key attributes. 
+
+           3>Primary-key attributes: A key Attributes which is choosen  to be a main attribute to determine the record 
+           uniquely in that table.
+           4>Non-primary-key attributes:  All the attributes except key attributes are know as Non-primarykey attributes. 
+
+           5>Composite Key:The combination of two are more attributes which determines the records uniquely.
+           6>Foreignkey:=>The Foreign key is used to relate the two tables. 
+                         =>The table which consists of primary key is called child table.
+                         =>The table which is reffering the child table is called the parent table.
+                         =>The data which is not present in the parent table we can not add it in child table.
+
+===================================================================================================================
+                                          FUNCTIONAL DEPENDENCIES
+==================================================================================================================
+Functional Dependencies:In a Functional Dependecy a relation exists such that an attribute determine another attribute uniquely
+                         is known as "Functional Dependecy".    
+                         
+                        Ex: R---->{x,y} example of Functional Dependecy.
+                        x is dependent on y and x is a determinant and y is dependent
+
+Types of Functional dependency:
+-------------------------------
+                               1>Total Functional Dependency
+                               2>Partial Functional Dependency
+                               3>Transitive Functional Dependency
+              
+                        
+1>Total Functional Dependency: All the attributes of a relation is determined by a key attribute 
+                              is known as Totally Functional Dependency.
+                              EX:Familiy.F----->{a[f],b[m],c[s],d[d]}
+                              a----->c(c is depending on a)
+                              a----->b(b is depending on a)
+                              a----->d(d is depending on a)
+
+2>Partial Functional Dependency:A relation is set to have partial funtional dependency first it 
+                                consists of  composite key attributes.They are exsist the dependency such that an attribute can be determined 
+                                by another attribute which is the part of composite key.
+                               R------>{a,b,c,d}
+                               ab---->c
+                               ab---->d
+                               a---->c
+                              
+3>Transitive Functional Dependency:A relation is said to be Transitive Functional Dependency if there exits an relation 
+                                   such that an attribute is determined by non-key attributes which interms is determined by
+                                   key attributes.
+                                   R------->{a,b,c,d}
+                                   a----->c
+                                   c----->d(Ex: one friend is common for both and key person)
+                                   a----->d
+                             
+=======================================================================================================================================
+                                                NORMALIZATION
+=======================================================================================================================================   
+=>Data Redundancy{repteation}- we write same name and id multiple times to insert different records.
+=>we have draw back to overcome that we are using this normlaization
+=>Anamoly:side effects on DML operations(Insert,update,delete).
+
+
+=>The process of decomposing  the table into smaller table in order to remove redundency
+  and anamololies by identifying dependencies
+=>The process of reducing the table into the smaller  
+=>A state of table witout any table redundency and anomolies
+
+TYPES OF NORMALFORMS:
+                    1>FIRST NORMALFORM:
+                    2>SECOND NORMALFORM:
+                    3>THIRD NORMALFORM:
+                    4> BC NORMALFORM
+                    4>FOURTH NORMALFORM:
+                    
+1>FIRST NORMALFORM:1NF A table is said to be the first normalform  if it is satisfying the conditions
+-----------------     1>Table should not have duplicate values
+                      2>Every cell in the table should be a single value(Atomic Value)
+   
+2>SECOND NORMALFORM:2NF:  A tables ae said to be 2NF if they follow conditions
+                   
+            
+                   1> The table should not have duplicate values  
+                   2> The table should not have partial dependency(we should not have composite key).
+NOTE: If the table consists partial functional deoendency the attributes which are responsible are 
+      removed from the table 
+
+
+3>THIRD NORMALFORM:The table should be 3Nf if they follow the conditions
+                   1>It should follow 2NF
+                   2>The table should not have transitive functional dependencies.
+NOTE:secondNF and 1NF and 3NF these are based on keyattributes and functional dependencies of relational scheme.
+
+======================================================================================================================
+                                     ENTITY RELATIONSHIP DIAGRAMS
+======================================================================================================================
+=>ER Diagram discribe the structure of DataBase With the help of Diagram .
+=> It is a blue print of database that can be later to implement a databse.
+
+
+Components of ER Diagram:
+                        1>Entity  =======>{Rectangle}
+                        2>Attribute =========>{Elipse}
+                        3>Relationship========>{Rombus}
+                        Single line represents the relation between entity and attributes.
+
+
+
+
