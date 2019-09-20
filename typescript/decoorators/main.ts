@@ -1,0 +1,10 @@
+function printconstructor(cons: Function) {
+    console.log(cons);
+}
+
+@printconstructor
+class sample {
+    constructor(){
+        console.log('hi hello i am sample class constructor');
+    }
+}
