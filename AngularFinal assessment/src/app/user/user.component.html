@@ -1,0 +1,24 @@
+<table class="table table-bordered table-hover" id="table">
+    <tr>
+        <th>Name</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Website</th>
+        <th>Address</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let user of users"> 
+        <td>{{user.name}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.website}}</td>
+        <td>Street: {{user.address.street}}
+            <br>City: {{user.address.city}
+        </td>
+        <td>
+            <button type="submit" class="btn btn-outline-danger" (click)="delete(data)">Delete</button>
+        </td>
+    <tr>
+</table>
+
+<!--  -->

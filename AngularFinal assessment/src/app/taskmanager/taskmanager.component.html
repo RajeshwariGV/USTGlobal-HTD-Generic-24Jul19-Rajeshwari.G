@@ -1,0 +1,24 @@
+<div style="background-image: url('');background-repeat:no-repeat;height:650px;width:cover;">
+    <br><br>
+    <div class="container col-md-4 card card-body">
+    <form action="" #taskForm='ngForm' (ngSubmit)='printForm(taskForm)'>
+        <legend class="text-center">Task Manager</legend>
+
+        <div class="form-group">
+            <label for="">Task</label>
+            <input type="text" class="form-control" id="" placeholder="Enter task" name="task"
+            #task='ngModel' ngModel required>
+        </div>
+        <button type="submit" class="btn btn-outline-success">Submit</button>
+    </form>
+    </div>
+    <br><br><br>
+    <div class="container col-md-4 card card-body">
+        <h3 class="text-center">List of Tasks</h3><br>
+        <ol>
+            <li *ngFor="let list of lists">{{list.task}}<br>
+            <button type="submit" class="btn btn-outline-danger form-control" (click)="delete(task)">Delete</button><br></li>
+        </ol>
+    </div>
+</div>
+
