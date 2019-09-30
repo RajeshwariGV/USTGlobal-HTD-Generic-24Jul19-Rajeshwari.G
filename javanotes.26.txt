@@ -1,0 +1,29 @@
+Constructor overloading:
+============================================================
+we can create same cons wit diff args 
+1.no-args
+2.int
+3.string
+package com.dev.Constructors;
+
+public class ConstructorsExample {
+	
+	public ConstructorsExample() {
+		System.out.println("This const is with no-arg ");
+	}
+
+
+	public ConstructorsExample(int i) {
+		System.out.println("This const is with int arg");
+	}
+	
+	public ConstructorsExample(String s) {
+		System.out.println("This const is with String arg");	
+	}
+
+	public static void main(String[] args) {
+		ConstructorsExample ce = new ConstructorsExample();
+		ConstructorsExample ce1 = new ConstructorsExample(1);
+		ConstructorsExample ce2 = new ConstructorsExample("A");
+	}
+}
